@@ -7,6 +7,10 @@ android {
     namespace = "com.app.githubclient"
     compileSdk = 34
 
+    buildFeatures {
+        dataBinding = true
+    }
+
     defaultConfig {
         applicationId = "com.app.githubclient"
         minSdk = 21
