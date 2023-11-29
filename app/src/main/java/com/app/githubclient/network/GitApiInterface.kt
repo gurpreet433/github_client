@@ -15,6 +15,8 @@ interface GitApiInterface {
         "X-GitHub-Api-Version: 2022-11-28"
     )
     suspend fun searchRepositories(
-        @Query("q") query: String
+        @Query("q") query: String,
+        @Query("per_page") perPage: Int = 10,
+        @Query("page") page: Int = 1
     ): Root
 }

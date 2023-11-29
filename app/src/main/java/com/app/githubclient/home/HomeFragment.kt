@@ -33,6 +33,7 @@ class HomeFragment : Fragment() {
 
         binding?.searchView?.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String): Boolean {
+                performSearch(query)
                 Toast.makeText(requireContext(), "Search done", Toast.LENGTH_LONG).show()
                 return false
             }
@@ -47,7 +48,6 @@ class HomeFragment : Fragment() {
             HomePojo("Item 2"),
             HomePojo("Item 3"),
         )
-        performSearch()
 
         recyclerView = binding?.homeRecyclerview
         val layoutManager: RecyclerView.LayoutManager =
@@ -71,18 +71,18 @@ class HomeFragment : Fragment() {
     private fun searchRepositories(query: String) {
         lifecycleScope.launch {
             try {
-                val response = GitApiInstance.gitHubApiService.searchRepositories("java")
+                val response = GitApiInstance.gitHubApiService.searchRepositories(query)
                 val repositories = response.items
 
                 Toast.makeText(requireContext(), "hello ${repositories.size}", Toast.LENGTH_SHORT).show()
+
             } catch (e: Exception) {
-                Toast.makeText(requireContext(), "hello error ${e}", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), "hello error $e", Toast.LENGTH_SHORT).show()
             }
         }
     }
 
-    private fun performSearch() {
-        val query = "your_search_query"
+    private fun performSearch(query: String) {
         searchRepositories(query)
     }
 }
