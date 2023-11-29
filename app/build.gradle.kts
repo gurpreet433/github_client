@@ -14,6 +14,7 @@ android {
     defaultConfig {
         applicationId = "com.app.githubclient"
         minSdk = 21
+        //noinspection EditedTargetSdkVersion
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
@@ -59,7 +60,6 @@ dependencies {
 
     // room
     implementation("androidx.room:room-runtime:$room_version")
-    annotationProcessor("androidx.room:room-compiler:$room_version")
     implementation("androidx.room:room-ktx:$room_version")
     implementation("androidx.room:room-paging:$room_version")
 

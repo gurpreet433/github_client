@@ -13,7 +13,7 @@ class HomeViewModel (
     private val repository: Repository
 ): ViewModel() {
 
-    private val searchRepositories: MutableLiveData<Resource<Root>> = MutableLiveData()
+    val searchRepositories: MutableLiveData<Resource<Root>> = MutableLiveData()
     private var pageNo = 1
 
     fun getRepositories(query: String) = viewModelScope.launch {

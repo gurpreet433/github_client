@@ -47,7 +47,7 @@ class RecyclerviewItemAdapter()
 
     }
 
-    private val differ = AsyncListDiffer(this, differCallback)
+    val differ = AsyncListDiffer(this, differCallback)
     private var onItemClickListener: ((Item) -> Unit)? = null
 
     fun setOnItemClickListener(listener: (Item) -> Unit) {
