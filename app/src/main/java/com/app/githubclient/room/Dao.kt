@@ -12,6 +12,6 @@ interface Dao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertItem(itemEntity: ItemEntity)
 
-    @Query("SELECT * FROM itemsTable")
+    @Query("SELECT * FROM ItemEntity")
     fun getAllItems() : LiveData<List<ItemEntity>>
 }

@@ -6,10 +6,8 @@ import com.app.githubclient.pojo.License
 import com.app.githubclient.pojo.Owner
 import com.fasterxml.jackson.annotation.JsonProperty
 
-@Entity (
-    tableName = "itemsTable"
-)
-data class ItemEntity(
+@Entity
+class ItemEntity(
     @PrimaryKey(autoGenerate = false)
     val id: Long,
     @JsonProperty("node_id")
@@ -18,7 +16,6 @@ data class ItemEntity(
     @JsonProperty("full_name")
     val fullName: String,
     val owner: Owner,
-    val private: Boolean,
     @JsonProperty("html_url")
     val htmlUrl: String,
     val description: String,
@@ -143,7 +140,5 @@ data class ItemEntity(
     @JsonProperty("has_downloads")
     val hasDownloads: Boolean,
     val archived: Boolean,
-    val disabled: Boolean,
-    val visibility: String,
-    val license: License,
+    val license: License
 )
