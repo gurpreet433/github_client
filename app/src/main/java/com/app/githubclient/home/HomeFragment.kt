@@ -49,12 +49,12 @@ class HomeFragment : Fragment() {
         binding?.searchView?.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String): Boolean {
 
-                Toast.makeText(requireContext(), "Search done", Toast.LENGTH_LONG).show()
+                Toast.makeText(requireContext(), "Submitted", Toast.LENGTH_LONG).show()
                 viewModel.getRepositories(query)
                 return false
             }
             override fun onQueryTextChange(newText: String): Boolean {
-                Toast.makeText(requireContext(), "Typing...", Toast.LENGTH_LONG).show()
+
                 return false
             }
         })
