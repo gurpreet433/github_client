@@ -45,8 +45,9 @@ class HomeFragment : Fragment() {
             HomePojo("Item 3"),
         )
 
+        recyclerView = binding?.homeRecyclerview
         val layoutManager: RecyclerView.LayoutManager =
-            StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
+            StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.VERTICAL)
         recyclerView?.layoutManager = layoutManager
         adapter = RecyclerviewAdapter(context, dummyList)
         recyclerView?.adapter = adapter
