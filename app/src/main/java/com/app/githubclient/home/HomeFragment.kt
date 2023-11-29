@@ -1,19 +1,25 @@
 package com.app.githubclient.home
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.SearchView
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.app.githubclient.R
 import com.app.githubclient.databinding.FragmentHomeBinding
+
 
 class HomeFragment : Fragment() {
 
     private var binding: FragmentHomeBinding? = null
+    var recyclerView: RecyclerView? = null
+    var adapter: RecyclerviewAdapter? = null
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,6 +38,20 @@ class HomeFragment : Fragment() {
                 return false
             }
         })
+
+        val dummyList = listOf(
+            HomePojo("Item 1"),
+            HomePojo("Item 2"),
+            HomePojo("Item 3"),
+        )
+
+        val layoutManager: RecyclerView.LayoutManager =
+            StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
+        recyclerView?.layoutManager = layoutManager
+        adapter = RecyclerviewAdapter(context, dummyList)
+        recyclerView?.adapter = adapter
+
+        binding
     }
 
     override fun onCreateView(
