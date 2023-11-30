@@ -9,5 +9,17 @@
         android:id="@+id/homeFragment"
         android:name="com.app.githubclient.home.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_detailsFragment"
+            app:destination="@id/detailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailsFragment"
+        android:name="com.app.githubclient.details.DetailsFragment"
+        android:label="DetailsFragment" >
+        <argument
+            android:name="repo"
+            app:argType="com.app.githubclient.pojo.Item" />
+    </fragment>
 </navigation>

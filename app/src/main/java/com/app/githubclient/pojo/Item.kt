@@ -1,6 +1,7 @@
 package com.app.githubclient.pojo
 
 import com.fasterxml.jackson.annotation.JsonProperty
+import java.io.Serializable
 
 data class Item(
     val id: Long,
@@ -138,4 +139,4 @@ data class Item(
     val disabled: Boolean,
     val visibility: String,
     val license: License,
-)
+): Serializable

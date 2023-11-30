@@ -4,14 +4,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.app.githubclient.R
 import com.app.githubclient.pojo.Item
 
-class RecyclerviewItemAdapter()
-    : RecyclerView.Adapter<RecyclerviewItemAdapter.ViewHolder>() {
+class RecyclerviewItemAdapter() : RecyclerView.Adapter<RecyclerviewItemAdapter.ViewHolder>() {
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val homeName: TextView = itemView.findViewById(R.id.repoName)
@@ -25,18 +25,13 @@ class RecyclerviewItemAdapter()
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val currentItem = differ.currentList[position]
         holder.homeName.text = currentItem.name
-        setOnItemClickListener {
-            onItemClickListener?.let {
-                it(currentItem)
-            }
-        }
     }
 
     override fun getItemCount(): Int {
         return differ.currentList.size
     }
 
-    private val differCallback = object : DiffUtil.ItemCallback<Item>(){
+    private val differCallback = object : DiffUtil.ItemCallback<Item>() {
         override fun areItemsTheSame(oldItem: Item, newItem: Item): Boolean {
             return oldItem.id == newItem.id
         }
@@ -44,13 +39,7 @@ class RecyclerviewItemAdapter()
         override fun areContentsTheSame(oldItem: Item, newItem: Item): Boolean {
             return oldItem == newItem
         }
-
     }
 
     val differ = AsyncListDiffer(this, differCallback)
-    private var onItemClickListener: ((Item) -> Unit)? = null
-
-    fun setOnItemClickListener(listener: (Item) -> Unit) {
-        onItemClickListener = listener
-    }
 }

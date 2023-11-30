@@ -9,30 +9,23 @@ import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.app.githubclient.R
 import com.app.githubclient.databinding.FragmentHomeBinding
-import com.app.githubclient.network.GitApiInstance
-import com.app.githubclient.network.GitApiInterface
 import com.app.githubclient.repository.Repository
 import com.app.githubclient.room.ItemDatabase
 import com.app.githubclient.util.Resource
-import kotlinx.coroutines.launch
 import retrofit2.Response
 
 class HomeFragment : Fragment() {
 
     private val TAG = "HomeFragment"
-
     private var binding: FragmentHomeBinding? = null
     private var recyclerView: RecyclerView? = null
     private var adapter: RecyclerviewItemAdapter? = null
-
     private lateinit var viewModel: HomeViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -46,6 +39,15 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+//       val bundle = Bundle().apply {
+//           putSerializable("repo", it)
+//        }
+//
+//        findNavController().navigate(
+//            R.id.action_homeFragment_to_detailsFragment,
+//            bundle)
+
+
         binding?.searchView?.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String): Boolean {
 
@@ -54,13 +56,12 @@ class HomeFragment : Fragment() {
                 return false
             }
             override fun onQueryTextChange(newText: String): Boolean {
-
                 return false
             }
         })
 
+        hideProgressBar()
         setUpRecyclerview()
-
 
         viewModel.searchRepositories.observe(viewLifecycleOwner, Observer { response ->
             when (response){
@@ -97,8 +98,6 @@ class HomeFragment : Fragment() {
         binding?.homeProgressBar?.visibility = View.INVISIBLE
     }
 
-
-
     private fun setUpRecyclerview() {
         recyclerView = binding?.homeRecyclerview
 
@@ -116,5 +115,4 @@ class HomeFragment : Fragment() {
                                 R.layout.fragment_home, container, false)
         return binding!!.root
     }
-
 }
