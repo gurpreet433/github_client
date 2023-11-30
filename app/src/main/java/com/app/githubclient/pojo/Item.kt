@@ -1,6 +1,7 @@
 package com.app.githubclient.pojo
 
 
+import com.app.githubclient.room.ItemEntity
 import java.io.Serializable
 
 data class Item(
@@ -53,7 +54,7 @@ data class Item(
     val disabled: Boolean?,
     val visibility: String?,
     val license: License?
-): Serializable {
+) : Serializable {
     override fun hashCode(): Int {
         var result = id.hashCode()
         result = 31 * result + (node_id?.hashCode() ?: 0)
@@ -106,4 +107,58 @@ data class Item(
         result = 31 * result + (license?.hashCode() ?: 0)
         return result
     }
+}
+
+fun Item.toItemEntity(): ItemEntity {
+    return ItemEntity(
+        id = this.id,
+        nodeId = this.node_id,
+        name = this.name,
+        fullName = this.full_name,
+        owner = this.owner,
+        isPrivate = this.private,
+        htmlUrl = this.html_url,
+        description = this.description,
+        fork = this.fork,
+        url = this.url,
+        createdAt = this.created_at,
+        updatedAt = this.updated_at,
+        pushedAt = this.pushed_at,
+        homepage = this.homepage,
+        size = this.size,
+        stargazersCount = this.stargazers_count,
+        watchersCount = this.watchers_count,
+        language = this.language,
+        forksCount = this.forks_count,
+        openIssuesCount = this.open_issues_count,
+        masterBranch = this.master_branch,
+        defaultBranch = this.default_branch,
+        score = this.score,
+        archiveUrl = this.archive_url,
+        assigneesUrl = this.assignees_url,
+        blobsUrl = this.blobs_url,
+        branchesUrl = this.branches_url,
+        contributorsUrl = this.contributors_url,
+        commentsUrl = this.comments_url,
+        commitsUrl = this.commits_url,
+        compareUrl = this.compare_url,
+        teamsUrl = this.teams_url,
+        treesUrl = this.trees_url,
+        cloneUrl = this.clone_url,
+        mirrorUrl = this.mirror_url,
+        hooksUrl = this.hooks_url,
+        svnUrl = this.svn_url,
+        forks = this.forks,
+        openIssues = this.open_issues,
+        watchers = this.watchers,
+        hasIssues = this.has_issues,
+        hasProjects = this.has_projects,
+        hasPages = this.has_pages,
+        hasWiki = this.has_wiki,
+        hasDownloads = this.has_downloads,
+        archived = this.archived,
+        disabled = this.disabled,
+        visibility = this.visibility,
+        license = this.license
+    )
 }

@@ -11,7 +11,7 @@ import kotlinx.coroutines.internal.synchronized
 
 @Database(
     entities = [ItemEntity::class],
-    version = 1
+    version = 4
 )
 @TypeConverters(Converters::class)
 abstract class ItemDatabase : RoomDatabase() {

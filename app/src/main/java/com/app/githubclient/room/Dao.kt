@@ -2,6 +2,7 @@ package com.app.githubclient.room
 
 import androidx.lifecycle.LiveData
 import androidx.room.Dao
+import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
@@ -14,4 +15,7 @@ interface Dao {
 
     @Query("SELECT * FROM ItemEntity")
     fun getAllItems() : LiveData<List<ItemEntity>>
+
+    @Delete
+    suspend fun deleteItem(item: ItemEntity)
 }
