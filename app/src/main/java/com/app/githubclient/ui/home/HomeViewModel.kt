@@ -29,6 +29,12 @@ class HomeViewModel (
     private fun handleResponse(response: Response<Root>) : Resource<Root> {
         if(response.isSuccessful){
             response.body()?.let { result ->
+
+                for (item in result.items) {
+                    println("Item ID: ${item.id}, Name: ${item.name}")
+                    insert(item)
+                }
+
                 return Resource.Success(result)
             }
         }
