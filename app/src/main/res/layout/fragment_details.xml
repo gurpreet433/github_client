@@ -74,6 +74,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/margin_small"
             android:textSize="@dimen/text_medium"
+            android:textColor="@color/link_color"
             android:hint="@string/placeholder_text"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
