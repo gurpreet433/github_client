@@ -16,6 +16,7 @@ import com.app.githubclient.home.HomeViewModel
 import com.app.githubclient.home.HomeViewModelProviderFactory
 import com.app.githubclient.repository.Repository
 import com.app.githubclient.room.ItemDatabase
+import com.bumptech.glide.Glide
 
 class DetailsFragment : Fragment() {
     private val TAG = "DetailsFragment"
@@ -45,7 +46,10 @@ class DetailsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val repo = args.repo
-        Toast.makeText(requireContext(), "${repo.name}", Toast.LENGTH_SHORT).show()
+
+        //Glide.with(this).load(repo.owner.)
+
+        binding?.repoName?.text = args.repo.name
     }
 
 }
