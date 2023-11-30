@@ -20,7 +20,8 @@ class HomeViewModel(
 ) : ViewModel() {
 
     val searchRepositories: MutableLiveData<Resource<Root>> = MutableLiveData()
-    private var pageNo = 1
+    var pageNo = 1
+    var searchResponse: Root? =null
 
     fun getRepositories(query: String) = viewModelScope.launch {
         searchRepositories.postValue(Resource.Loading())
@@ -44,7 +45,8 @@ class HomeViewModel(
             searchRepositories.postValue(Resource.Success(
                 Root(response.size.toLong(),
                     false,
-                    response.toItemList())))
+                    response.toItemList().toMutableList()
+                )))
         } catch (e: Exception) {
             searchRepositories.postValue(Resource.Error("Error loading data from database"))
         }
@@ -54,11 +56,22 @@ class HomeViewModel(
     private fun handleResponse(response: Response<Root>): Resource<Root> {
         if (response.isSuccessful) {
             response.body()?.let { result ->
+                pageNo++
+                if(searchResponse == null) {
+                    searchResponse = result
+                }else {
+                    var old = searchResponse?.items
+                    var new = result.items
+
+                    old?.addAll(new)
+                }
+
+                // add to database
                 for (item in result.items) {
                     println("Item ID: ${item.id}, Name: ${item.name}")
                     insert(item)
                 }
-                return Resource.Success(result)
+                return Resource.Success(searchResponse ?: result)
             }
         }
         return Resource.Error(response.message())

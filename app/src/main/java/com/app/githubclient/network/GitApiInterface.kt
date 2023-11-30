@@ -1,5 +1,6 @@
 package com.app.githubclient.network
 import com.app.githubclient.pojo.Root
+import com.app.githubclient.util.Constant.Companion.QUERY_PAGE_SIZE
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Headers
@@ -13,7 +14,7 @@ interface GitApiInterface {
     )
     suspend fun searchRepositories(
         @Query("q") query: String,
-        @Query("per_page") perPage: Int = 10,
+        @Query("per_page") perPage: Int = QUERY_PAGE_SIZE,
         @Query("page") pageNo: Int = 1
     ): Response<Root>
 }

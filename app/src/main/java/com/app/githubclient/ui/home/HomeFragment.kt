@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AbsListView
 import android.widget.SearchView
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
@@ -18,6 +19,7 @@ import com.app.githubclient.R
 import com.app.githubclient.databinding.FragmentHomeBinding
 import com.app.githubclient.repository.Repository
 import com.app.githubclient.room.ItemDatabase
+import com.app.githubclient.util.Constant.Companion.QUERY_PAGE_SIZE
 import com.app.githubclient.util.Resource
 import retrofit2.Response
 
@@ -37,6 +39,8 @@ class HomeFragment : Fragment() {
         viewModel = ViewModelProvider(this, viewModelProviderFactory)[HomeViewModel::class.java]
     }
 
+    var currentQuery = ""
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -44,6 +48,7 @@ class HomeFragment : Fragment() {
             override fun onQueryTextSubmit(query: String): Boolean {
 
                 Toast.makeText(requireContext(), "Submitted", Toast.LENGTH_LONG).show()
+                currentQuery = query
                 viewModel.getRepositories(query)
                 return false
             }
@@ -62,7 +67,9 @@ class HomeFragment : Fragment() {
                     Log.e(TAG, "Success")
                     hideProgressBar()
                     response.data?.let { itemResponse ->
-                        adapter?.differ?.submitList(itemResponse.items)
+                        adapter?.differ?.submitList(itemResponse.items.toList())
+                        val totalPages = itemResponse.totalCount / QUERY_PAGE_SIZE + 2
+                        isLastPage = viewModel.pageNo.toLong() == totalPages
                     }
                 }
 
@@ -87,10 +94,51 @@ class HomeFragment : Fragment() {
 
     private fun showProgressBar() {
         binding?.homeProgressBar?.visibility = View.VISIBLE
+        isLoading = true
     }
 
     private fun hideProgressBar() {
         binding?.homeProgressBar?.visibility = View.INVISIBLE
+        isLoading = false
+    }
+
+    var isLoading = false
+    var isLastPage = false
+    var isScrolling = false
+
+    val scrollListener = object : RecyclerView.OnScrollListener() {
+        override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+            super.onScrolled(recyclerView, dx, dy)
+
+            val layoutManager = recyclerView.layoutManager as LinearLayoutManager
+            val firstVisibleItemPosition = layoutManager.findFirstVisibleItemPosition()
+            val visibleItemCount = layoutManager.childCount
+            val totalItemCount = layoutManager.itemCount
+
+            val isNotLoadingAndNotLastPage = !isLoading && !isLastPage
+            val isAtLastItem = firstVisibleItemPosition + visibleItemCount >= totalItemCount
+
+            val isNotAtBeginning = firstVisibleItemPosition >= 0
+            val isTotalMoreThanVisible = totalItemCount >= QUERY_PAGE_SIZE
+
+            val shouldPaginate = isNotLoadingAndNotLastPage && isAtLastItem && isNotAtBeginning &&
+                    isTotalMoreThanVisible && isScrolling
+
+            if (shouldPaginate){
+                viewModel.getRepositories(currentQuery)
+                isScrolling = false
+            } else {
+                recyclerView.setPadding(0,0,0,0)
+            }
+        }
+
+        override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+            super.onScrollStateChanged(recyclerView, newState)
+
+            if(newState == AbsListView.OnScrollListener.SCROLL_STATE_TOUCH_SCROLL) {
+                isScrolling = true
+            }
+        }
     }
 
     private fun setUpRecyclerview() {
@@ -99,6 +147,7 @@ class HomeFragment : Fragment() {
         adapter = RecyclerviewItemAdapter()
         recyclerView?.adapter = adapter
         recyclerView?.layoutManager = LinearLayoutManager(requireContext())
+        recyclerView?.addOnScrollListener(this@HomeFragment.scrollListener)
 
         adapter?.onItemClick = {
             val bundle = Bundle().apply {

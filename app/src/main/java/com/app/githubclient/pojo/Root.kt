@@ -7,5 +7,5 @@ data class Root(
     val totalCount: Long,
     @JsonProperty("incomplete_results")
     val incompleteResults: Boolean,
-    val items: List<Item>,
+    val items: MutableList<Item>,
 )
