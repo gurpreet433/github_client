@@ -3,8 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <data>
-    </data>
+    <data></data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -14,10 +13,10 @@
         <TextView
             android:id="@+id/repoName"
             android:layout_width="0dp"
-            android:layout_margin="@dimen/margin_small"
             android:layout_height="wrap_content"
-            android:textSize="@dimen/text_large"
+            android:layout_margin="@dimen/margin_small"
             android:hint="@string/placeholder_text"
+            android:textSize="@dimen/text_large"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
@@ -61,8 +60,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/margin_small"
-            android:textSize="@dimen/text_medium"
             android:text="@string/projects_link_text"
+            android:textSize="@dimen/text_medium"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
@@ -73,9 +72,9 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/margin_small"
-            android:textSize="@dimen/text_medium"
-            android:textColor="@color/link_color"
             android:hint="@string/placeholder_text"
+            android:textColor="@color/link_color"
+            android:textSize="@dimen/text_medium"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
@@ -93,14 +92,19 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/projectLink" />
 
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/contributorsRecyclerview"
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
+        <TextView
+            android:id="@+id/projectContributorsLink"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:layout_margin="@dimen/margin_small"
-            app:layout_constraintEnd_toEndOf="@+id/projectLink"
-            app:layout_constraintStart_toStartOf="@+id/projectLink"
+            android:hint="@string/placeholder_text"
+            android:textColor="@color/link_color"
+            android:textSize="@dimen/text_medium"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/contributorsText" />
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

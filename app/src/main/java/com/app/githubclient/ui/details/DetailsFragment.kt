@@ -55,10 +55,10 @@ class DetailsFragment : Fragment() {
             .into(binding!!.image)
         binding?.repoName?.text = repo.name
         binding?.projectLink?.text = repo?.html_url
+        binding?.projectContributorsLink?.text = repo?.contributors_url
         binding?.description?.text = repo.description
 
         binding?.projectLink?.setOnClickListener {
-
             repo.html_url.let {
                 val action =
                     DetailsFragmentDirections.actionDetailsFragmentToWebViewFragment(
@@ -66,7 +66,16 @@ class DetailsFragment : Fragment() {
                     )
                 findNavController().navigate(action)
             }
+        }
 
+        binding?.projectContributorsLink?.setOnClickListener {
+            repo.contributors_url.let {
+                val action =
+                    DetailsFragmentDirections.actionDetailsFragmentToWebViewFragment(
+                        repo.contributors_url!!
+                    )
+                findNavController().navigate(action)
+            }
         }
 
     }

@@ -31,7 +31,7 @@ data class Item(
     val assignees_url: String?,
     val blobs_url: String?,
     val branches_url: String?,
-    val collaborators_url: String?,
+    val contributors_url: String?,
     val comments_url: String?,
     val commits_url: String?,
     val compare_url: String?,
@@ -82,7 +82,7 @@ data class Item(
         result = 31 * result + (assignees_url?.hashCode() ?: 0)
         result = 31 * result + (blobs_url?.hashCode() ?: 0)
         result = 31 * result + (branches_url?.hashCode() ?: 0)
-        result = 31 * result + (collaborators_url?.hashCode() ?: 0)
+        result = 31 * result + (contributors_url?.hashCode() ?: 0)
         result = 31 * result + (comments_url?.hashCode() ?: 0)
         result = 31 * result + (commits_url?.hashCode() ?: 0)
         result = 31 * result + (compare_url?.hashCode() ?: 0)
