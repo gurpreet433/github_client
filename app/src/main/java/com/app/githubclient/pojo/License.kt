@@ -4,15 +4,12 @@ import com.fasterxml.jackson.annotation.JsonProperty
 import java.io.Serializable
 
 data class License(
-    val key: String?,
-    val name: String?,
-    val url: String?,
-    @JsonProperty("spdx_id")
-    val spdxId: String?,
-    @JsonProperty("node_id")
-    val nodeId: String?,
-    @JsonProperty("html_url")
-    val htmlUrl: String?
+    val key: String? =null,
+    val name: String?=null,
+    val url: String?=null,
+    val spdx_id: String?=null,
+    val node_id: String?=null,
+    val html_url: String?=null
 ) : Serializable {
 
     companion object {
@@ -28,9 +25,9 @@ data class License(
         if (key != license.key) return false
         if (name != license.name) return false
         if (url != license.url) return false
-        if (spdxId != license.spdxId) return false
-        if (nodeId != license.nodeId) return false
-        if (htmlUrl != license.htmlUrl) return false
+        if (spdx_id != license.spdx_id) return false
+        if (node_id != license.node_id) return false
+        if (html_url != license.html_url) return false
 
         return true
     }
@@ -39,9 +36,9 @@ data class License(
         var result = key?.hashCode() ?: 0
         result = 31 * result + (name?.hashCode() ?: 0)
         result = 31 * result + (url?.hashCode() ?: 0)
-        result = 31 * result + (spdxId?.hashCode() ?: 0)
-        result = 31 * result + (nodeId?.hashCode() ?: 0)
-        result = 31 * result + (htmlUrl?.hashCode() ?: 0)
+        result = 31 * result + (spdx_id?.hashCode() ?: 0)
+        result = 31 * result + (node_id?.hashCode() ?: 0)
+        result = 31 * result + (html_url?.hashCode() ?: 0)
         return result
     }
 }
