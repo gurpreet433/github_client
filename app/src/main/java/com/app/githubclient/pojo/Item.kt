@@ -1,88 +1,54 @@
 package com.app.githubclient.pojo
 
-import com.fasterxml.jackson.annotation.JsonProperty
+
 import java.io.Serializable
 
 data class Item(
     val id: Long,
-    @JsonProperty("node_id")
-    val nodeId: String?,
+    val node_id: String?,
     val name: String,
-    @JsonProperty("full_name")
-    val fullName: String?,
+    val full_name: String?,
     val owner: Owner?,
     val private: Boolean?,
-    @JsonProperty("html_url")
-    val htmlUrl: String?,
+    val html_url: String?,
     val description: String?,
     val fork: Boolean?,
     val url: String?,
-    @JsonProperty("created_at")
-    val createdAt: String?,
-    @JsonProperty("updated_at")
-    val updatedAt: String?,
-    @JsonProperty("pushed_at")
-    val pushedAt: String?,
+    val created_at: String?,
+    val updated_at: String?,
+    val pushed_at: String?,
     val homepage: String?,
     val size: Long?,
-    @JsonProperty("stargazers_count")
-    val stargazersCount: Long?,
-    @JsonProperty("watchers_count")
-    val watchersCount: Long?,
+    val stargazers_count: Long?,
+    val watchers_count: Long?,
     val language: String?,
-    @JsonProperty("forks_count")
-    val forksCount: Long?,
-    @JsonProperty("open_issues_count")
-    val openIssuesCount: Long?,
-    @JsonProperty("master_branch")
-    val masterBranch: String?,
-    @JsonProperty("default_branch")
-    val defaultBranch: String?,
+    val forks_count: Long?,
+    val open_issues_count: Long?,
+    val master_branch: String?,
+    val default_branch: String?,
     val score: Long?,
-    @JsonProperty("archive_url")
-    val archiveUrl: String?,
-    @JsonProperty("assignees_url")
-    val assigneesUrl: String?,
-    @JsonProperty("blobs_url")
-    val blobsUrl: String?,
-    @JsonProperty("branches_url")
-    val branchesUrl: String?,
-    @JsonProperty("collaborators_url")
-    val collaboratorsUrl: String?,
-    @JsonProperty("comments_url")
-    val commentsUrl: String?,
-    @JsonProperty("commits_url")
-    val commitsUrl: String?,
-    @JsonProperty("compare_url")
-    val compareUrl: String?,
-    // Add null checks for other properties...
-
-    @JsonProperty("teams_url")
-    val teamsUrl: String?,
-    @JsonProperty("trees_url")
-    val treesUrl: String?,
-    @JsonProperty("clone_url")
-    val cloneUrl: String?,
-    @JsonProperty("mirror_url")
-    val mirrorUrl: String?,
-    @JsonProperty("hooks_url")
-    val hooksUrl: String?,
-    @JsonProperty("svn_url")
-    val svnUrl: String?,
+    val archive_url: String?,
+    val assignees_url: String?,
+    val blobs_url: String?,
+    val branches_url: String?,
+    val collaborators_url: String?,
+    val comments_url: String?,
+    val commits_url: String?,
+    val compare_url: String?,
+    val teams_url: String?,
+    val trees_url: String?,
+    val clone_url: String?,
+    val mirror_url: String?,
+    val hooks_url: String?,
+    val svn_url: String?,
     val forks: Long?,
-    @JsonProperty("open_issues")
-    val openIssues: Long?,
+    val open_issues: Long?,
     val watchers: Long?,
-    @JsonProperty("has_issues")
-    val hasIssues: Boolean?,
-    @JsonProperty("has_projects")
-    val hasProjects: Boolean?,
-    @JsonProperty("has_pages")
-    val hasPages: Boolean?,
-    @JsonProperty("has_wiki")
-    val hasWiki: Boolean?,
-    @JsonProperty("has_downloads")
-    val hasDownloads: Boolean?,
+    val has_issues: Boolean?,
+    val has_projects: Boolean?,
+    val has_pages: Boolean?,
+    val has_wiki: Boolean?,
+    val has_downloads: Boolean?,
     val archived: Boolean?,
     val disabled: Boolean?,
     val visibility: String?,
@@ -90,51 +56,50 @@ data class Item(
 ): Serializable {
     override fun hashCode(): Int {
         var result = id.hashCode()
-        result = 31 * result + (nodeId?.hashCode() ?: 0)
+        result = 31 * result + (node_id?.hashCode() ?: 0)
         result = 31 * result + name.hashCode()
-        result = 31 * result + (fullName?.hashCode() ?: 0)
+        result = 31 * result + (full_name?.hashCode() ?: 0)
         result = 31 * result + (owner?.hashCode() ?: 0)
         result = 31 * result + (private?.hashCode() ?: 0)
-        result = 31 * result + (htmlUrl?.hashCode() ?: 0)
+        result = 31 * result + (html_url?.hashCode() ?: 0)
         result = 31 * result + (description?.hashCode() ?: 0)
         result = 31 * result + (fork?.hashCode() ?: 0)
         result = 31 * result + (url?.hashCode() ?: 0)
-        result = 31 * result + (createdAt?.hashCode() ?: 0)
-        result = 31 * result + (updatedAt?.hashCode() ?: 0)
-        result = 31 * result + (pushedAt?.hashCode() ?: 0)
+        result = 31 * result + (created_at?.hashCode() ?: 0)
+        result = 31 * result + (updated_at?.hashCode() ?: 0)
+        result = 31 * result + (pushed_at?.hashCode() ?: 0)
         result = 31 * result + (homepage?.hashCode() ?: 0)
         result = 31 * result + (size?.hashCode() ?: 0)
-        result = 31 * result + (stargazersCount?.hashCode() ?: 0)
-        result = 31 * result + (watchersCount?.hashCode() ?: 0)
+        result = 31 * result + (stargazers_count?.hashCode() ?: 0)
+        result = 31 * result + (watchers_count?.hashCode() ?: 0)
         result = 31 * result + (language?.hashCode() ?: 0)
-        result = 31 * result + (forksCount?.hashCode() ?: 0)
-        result = 31 * result + (openIssuesCount?.hashCode() ?: 0)
-        result = 31 * result + (masterBranch?.hashCode() ?: 0)
-        result = 31 * result + (defaultBranch?.hashCode() ?: 0)
+        result = 31 * result + (forks_count?.hashCode() ?: 0)
+        result = 31 * result + (open_issues_count?.hashCode() ?: 0)
+        result = 31 * result + (master_branch?.hashCode() ?: 0)
+        result = 31 * result + (default_branch?.hashCode() ?: 0)
         result = 31 * result + (score?.hashCode() ?: 0)
-        result = 31 * result + (archiveUrl?.hashCode() ?: 0)
-        result = 31 * result + (assigneesUrl?.hashCode() ?: 0)
-        result = 31 * result + (blobsUrl?.hashCode() ?: 0)
-        result = 31 * result + (branchesUrl?.hashCode() ?: 0)
-        result = 31 * result + (collaboratorsUrl?.hashCode() ?: 0)
-        result = 31 * result + (commentsUrl?.hashCode() ?: 0)
-        result = 31 * result + (commitsUrl?.hashCode() ?: 0)
-        result = 31 * result + (compareUrl?.hashCode() ?: 0)
-        // Add null checks for other properties...
-        result = 31 * result + (teamsUrl?.hashCode() ?: 0)
-        result = 31 * result + (treesUrl?.hashCode() ?: 0)
-        result = 31 * result + (cloneUrl?.hashCode() ?: 0)
-        result = 31 * result + (mirrorUrl?.hashCode() ?: 0)
-        result = 31 * result + (hooksUrl?.hashCode() ?: 0)
-        result = 31 * result + (svnUrl?.hashCode() ?: 0)
+        result = 31 * result + (archive_url?.hashCode() ?: 0)
+        result = 31 * result + (assignees_url?.hashCode() ?: 0)
+        result = 31 * result + (blobs_url?.hashCode() ?: 0)
+        result = 31 * result + (branches_url?.hashCode() ?: 0)
+        result = 31 * result + (collaborators_url?.hashCode() ?: 0)
+        result = 31 * result + (comments_url?.hashCode() ?: 0)
+        result = 31 * result + (commits_url?.hashCode() ?: 0)
+        result = 31 * result + (compare_url?.hashCode() ?: 0)
+        result = 31 * result + (teams_url?.hashCode() ?: 0)
+        result = 31 * result + (trees_url?.hashCode() ?: 0)
+        result = 31 * result + (clone_url?.hashCode() ?: 0)
+        result = 31 * result + (mirror_url?.hashCode() ?: 0)
+        result = 31 * result + (hooks_url?.hashCode() ?: 0)
+        result = 31 * result + (svn_url?.hashCode() ?: 0)
         result = 31 * result + (forks?.hashCode() ?: 0)
-        result = 31 * result + (openIssues?.hashCode() ?: 0)
+        result = 31 * result + (open_issues?.hashCode() ?: 0)
         result = 31 * result + (watchers?.hashCode() ?: 0)
-        result = 31 * result + (hasIssues?.hashCode() ?: 0)
-        result = 31 * result + (hasProjects?.hashCode() ?: 0)
-        result = 31 * result + (hasPages?.hashCode() ?: 0)
-        result = 31 * result + (hasWiki?.hashCode() ?: 0)
-        result = 31 * result + (hasDownloads?.hashCode() ?: 0)
+        result = 31 * result + (has_issues?.hashCode() ?: 0)
+        result = 31 * result + (has_projects?.hashCode() ?: 0)
+        result = 31 * result + (has_pages?.hashCode() ?: 0)
+        result = 31 * result + (has_wiki?.hashCode() ?: 0)
+        result = 31 * result + (has_downloads?.hashCode() ?: 0)
         result = 31 * result + (archived?.hashCode() ?: 0)
         result = 31 * result + (disabled?.hashCode() ?: 0)
         result = 31 * result + (visibility?.hashCode() ?: 0)

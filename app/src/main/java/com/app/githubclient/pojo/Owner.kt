@@ -1,62 +1,47 @@
 package com.app.githubclient.pojo
 
-import com.fasterxml.jackson.annotation.JsonProperty
 import java.io.Serializable
 
 data class Owner(
     val login: String?,
     val id: Long?,
-    @JsonProperty("node_id")
-    val nodeId: String?,
-    @JsonProperty("avatar_url")
-    val avatarUrl: String?,
-    @JsonProperty("gravatar_id")
-    val gravatarId: String?,
+    val node_id: String?,
+    val avatar_url: String?,
+    val gravatar_id: String?,
     val url: String?,
-    @JsonProperty("received_events_url")
-    val receivedEventsUrl: String?,
+    val received_events_url: String?,
     val type: String?,
-    @JsonProperty("html_url")
-    val htmlUrl: String?,
-    @JsonProperty("followers_url")
-    val followersUrl: String?,
-    @JsonProperty("following_url")
-    val followingUrl: String?,
-    @JsonProperty("gists_url")
-    val gistsUrl: String?,
-    @JsonProperty("starred_url")
-    val starredUrl: String?,
-    @JsonProperty("subscriptions_url")
-    val subscriptionsUrl: String?,
-    @JsonProperty("organizations_url")
-    val organizationsUrl: String?,
-    @JsonProperty("repos_url")
-    val reposUrl: String?,
-    @JsonProperty("events_url")
-    val eventsUrl: String?,
-    @JsonProperty("site_admin")
-    val siteAdmin: Boolean?
+    val html_url: String?,
+    val followers_url: String?,
+    val following_url: String?,
+    val gists_url: String?,
+    val starred_url: String?,
+    val subscriptions_url: String?,
+    val organizations_url: String?,
+    val repos_url: String?,
+    val events_url: String?,
+    val site_admin: Boolean?
 ) : Serializable{
 
     override fun hashCode(): Int {
         var result = login?.hashCode() ?: 0
         result = 31 * result + (id?.hashCode() ?: 0)
-        result = 31 * result + (nodeId?.hashCode() ?: 0)
-        result = 31 * result + (avatarUrl?.hashCode() ?: 0)
-        result = 31 * result + (gravatarId?.hashCode() ?: 0)
+        result = 31 * result + (node_id?.hashCode() ?: 0)
+        result = 31 * result + (avatar_url?.hashCode() ?: 0)
+        result = 31 * result + (gravatar_id?.hashCode() ?: 0)
         result = 31 * result + (url?.hashCode() ?: 0)
-        result = 31 * result + (receivedEventsUrl?.hashCode() ?: 0)
+        result = 31 * result + (received_events_url?.hashCode() ?: 0)
         result = 31 * result + (type?.hashCode() ?: 0)
-        result = 31 * result + (htmlUrl?.hashCode() ?: 0)
-        result = 31 * result + (followersUrl?.hashCode() ?: 0)
-        result = 31 * result + (followingUrl?.hashCode() ?: 0)
-        result = 31 * result + (gistsUrl?.hashCode() ?: 0)
-        result = 31 * result + (starredUrl?.hashCode() ?: 0)
-        result = 31 * result + (subscriptionsUrl?.hashCode() ?: 0)
-        result = 31 * result + (organizationsUrl?.hashCode() ?: 0)
-        result = 31 * result + (reposUrl?.hashCode() ?: 0)
-        result = 31 * result + (eventsUrl?.hashCode() ?: 0)
-        result = 31 * result + siteAdmin.hashCode()
+        result = 31 * result + (html_url?.hashCode() ?: 0)
+        result = 31 * result + (followers_url?.hashCode() ?: 0)
+        result = 31 * result + (following_url?.hashCode() ?: 0)
+        result = 31 * result + (gists_url?.hashCode() ?: 0)
+        result = 31 * result + (starred_url?.hashCode() ?: 0)
+        result = 31 * result + (subscriptions_url?.hashCode() ?: 0)
+        result = 31 * result + (organizations_url?.hashCode() ?: 0)
+        result = 31 * result + (repos_url?.hashCode() ?: 0)
+        result = 31 * result + (events_url?.hashCode() ?: 0)
+        result = 31 * result + site_admin.hashCode()
         return result
     }
 }

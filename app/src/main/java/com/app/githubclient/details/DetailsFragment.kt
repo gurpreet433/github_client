@@ -30,15 +30,18 @@ class DetailsFragment : Fragment() {
 
         val repository = Repository(ItemDatabase(requireContext()))
         val detailsModelProviderFactory = DetailsModelProviderFactory(repository)
-        viewModel = ViewModelProvider(this, detailsModelProviderFactory)[DetailsViewModel::class.java]
+        viewModel =
+            ViewModelProvider(this, detailsModelProviderFactory)[DetailsViewModel::class.java]
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = DataBindingUtil.inflate<FragmentDetailsBinding>(inflater,
-            R.layout.fragment_details, container, false)
+        binding = DataBindingUtil.inflate<FragmentDetailsBinding>(
+            inflater,
+            R.layout.fragment_details, container, false
+        )
         return binding!!.root
     }
 
@@ -47,13 +50,11 @@ class DetailsFragment : Fragment() {
 
         val repo = args.repo
 
-        Glide.with(this).load(repo.owner?.avatarUrl).into(binding!!.image)
-
-        binding?.repoName?.text = args.repo.name
-        binding?.description?.text = args.repo.description
-
-
-
+        Glide.with(this).load(repo.owner?.avatar_url).placeholder(R.drawable.ic_launcher_background)
+            .into(binding!!.image)
+        binding?.repoName?.text = repo.name
+        binding?.projectLinks?.text = repo?.url
+        binding?.description?.text = repo.description
     }
 
 }
