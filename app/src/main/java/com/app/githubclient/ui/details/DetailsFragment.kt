@@ -1,4 +1,4 @@
-package com.app.githubclient.details
+package com.app.githubclient.ui.details
 
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
@@ -13,8 +13,8 @@ import androidx.navigation.fragment.navArgs
 import com.app.githubclient.R
 import com.app.githubclient.databinding.FragmentDetailsBinding
 import com.app.githubclient.databinding.FragmentHomeBinding
-import com.app.githubclient.home.HomeViewModel
-import com.app.githubclient.home.HomeViewModelProviderFactory
+import com.app.githubclient.ui.home.HomeViewModel
+import com.app.githubclient.ui.home.HomeViewModelProviderFactory
 import com.app.githubclient.repository.Repository
 import com.app.githubclient.room.ItemDatabase
 import com.bumptech.glide.Glide
@@ -60,7 +60,10 @@ class DetailsFragment : Fragment() {
         binding?.projectLink?.setOnClickListener {
 
             repo.html_url.let {
-                val action = DetailsFragmentDirections.actionDetailsFragmentToWebViewFragment(repo.html_url!!)
+                val action =
+                    DetailsFragmentDirections.actionDetailsFragmentToWebViewFragment(
+                        repo.html_url!!
+                    )
                 findNavController().navigate(action)
             }
 

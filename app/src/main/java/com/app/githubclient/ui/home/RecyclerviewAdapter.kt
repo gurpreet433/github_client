@@ -1,4 +1,4 @@
-package com.app.githubclient.home
+package com.app.githubclient.ui.home
 
 import android.content.Context
 import android.view.LayoutInflater

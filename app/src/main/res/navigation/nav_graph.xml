@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.app.githubclient.home.HomeFragment"
+        android:name="com.app.githubclient.ui.home.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" >
         <action
@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/detailsFragment"
-        android:name="com.app.githubclient.details.DetailsFragment"
+        android:name="com.app.githubclient.ui.details.DetailsFragment"
         android:label="DetailsFragment" >
         <argument
             android:name="repo"
@@ -28,7 +28,7 @@
 
     <fragment
         android:id="@+id/webViewFragment"
-        android:name="com.app.githubclient.web.WebViewFragment"
+        android:name="com.app.githubclient.ui.web.WebViewFragment"
         android:label="WebViewFragment" >
         <argument
             android:name="url"

@@ -1,4 +1,4 @@
-package com.app.githubclient.web
+package com.app.githubclient.ui.web
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
