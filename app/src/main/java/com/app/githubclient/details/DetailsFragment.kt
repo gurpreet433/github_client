@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.app.githubclient.R
 import com.app.githubclient.databinding.FragmentDetailsBinding
@@ -57,6 +58,11 @@ class DetailsFragment : Fragment() {
         binding?.description?.text = repo.description
 
         binding?.projectLink?.setOnClickListener {
+
+            repo.html_url.let {
+                val action = DetailsFragmentDirections.actionDetailsFragmentToWebViewFragment(repo.html_url!!)
+                findNavController().navigate(action)
+            }
 
         }
 
