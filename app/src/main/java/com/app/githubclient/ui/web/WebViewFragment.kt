@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.webkit.WebViewClient
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.fragment.navArgs
@@ -38,6 +39,11 @@ class WebViewFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val url = args.url
+
+        binding?.webView?.apply {
+            webViewClient = WebViewClient()
+            loadUrl(args.url)
+        }
 
         Toast.makeText(requireContext(), url, Toast.LENGTH_LONG).show()
 
