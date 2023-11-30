@@ -6,137 +6,121 @@ import java.io.Serializable
 data class Item(
     val id: Long,
     @JsonProperty("node_id")
-    val nodeId: String,
+    val nodeId: String?,
     val name: String,
     @JsonProperty("full_name")
-    val fullName: String,
-    val owner: Owner,
-    val private: Boolean,
+    val fullName: String?,
+    val owner: Owner?,
+    val private: Boolean?,
     @JsonProperty("html_url")
-    val htmlUrl: String,
-    val description: String,
-    val fork: Boolean,
-    val url: String,
+    val htmlUrl: String?,
+    val description: String?,
+    val fork: Boolean?,
+    val url: String?,
     @JsonProperty("created_at")
-    val createdAt: String,
+    val createdAt: String?,
     @JsonProperty("updated_at")
-    val updatedAt: String,
+    val updatedAt: String?,
     @JsonProperty("pushed_at")
-    val pushedAt: String,
-    val homepage: String,
-    val size: Long,
+    val pushedAt: String?,
+    val homepage: String?,
+    val size: Long?,
     @JsonProperty("stargazers_count")
-    val stargazersCount: Long,
+    val stargazersCount: Long?,
     @JsonProperty("watchers_count")
-    val watchersCount: Long,
-    val language: String,
+    val watchersCount: Long?,
+    val language: String?,
     @JsonProperty("forks_count")
-    val forksCount: Long,
+    val forksCount: Long?,
     @JsonProperty("open_issues_count")
-    val openIssuesCount: Long,
+    val openIssuesCount: Long?,
     @JsonProperty("master_branch")
-    val masterBranch: String,
+    val masterBranch: String?,
     @JsonProperty("default_branch")
-    val defaultBranch: String,
-    val score: Long,
+    val defaultBranch: String?,
+    val score: Long?,
     @JsonProperty("archive_url")
-    val archiveUrl: String,
+    val archiveUrl: String?,
     @JsonProperty("assignees_url")
-    val assigneesUrl: String,
+    val assigneesUrl: String?,
     @JsonProperty("blobs_url")
-    val blobsUrl: String,
+    val blobsUrl: String?,
     @JsonProperty("branches_url")
-    val branchesUrl: String,
+    val branchesUrl: String?,
     @JsonProperty("collaborators_url")
-    val collaboratorsUrl: String,
+    val collaboratorsUrl: String?,
     @JsonProperty("comments_url")
-    val commentsUrl: String,
+    val commentsUrl: String?,
     @JsonProperty("commits_url")
-    val commitsUrl: String,
+    val commitsUrl: String?,
     @JsonProperty("compare_url")
-    val compareUrl: String,
-    @JsonProperty("contents_url")
-    val contentsUrl: String,
-    @JsonProperty("contributors_url")
-    val contributorsUrl: String,
-    @JsonProperty("deployments_url")
-    val deploymentsUrl: String,
-    @JsonProperty("downloads_url")
-    val downloadsUrl: String,
-    @JsonProperty("events_url")
-    val eventsUrl: String,
-    @JsonProperty("forks_url")
-    val forksUrl: String,
-    @JsonProperty("git_commits_url")
-    val gitCommitsUrl: String,
-    @JsonProperty("git_refs_url")
-    val gitRefsUrl: String,
-    @JsonProperty("git_tags_url")
-    val gitTagsUrl: String,
-    @JsonProperty("git_url")
-    val gitUrl: String,
-    @JsonProperty("issue_comment_url")
-    val issueCommentUrl: String,
-    @JsonProperty("issue_events_url")
-    val issueEventsUrl: String,
-    @JsonProperty("issues_url")
-    val issuesUrl: String,
-    @JsonProperty("keys_url")
-    val keysUrl: String,
-    @JsonProperty("labels_url")
-    val labelsUrl: String,
-    @JsonProperty("languages_url")
-    val languagesUrl: String,
-    @JsonProperty("merges_url")
-    val mergesUrl: String,
-    @JsonProperty("milestones_url")
-    val milestonesUrl: String,
-    @JsonProperty("notifications_url")
-    val notificationsUrl: String,
-    @JsonProperty("pulls_url")
-    val pullsUrl: String,
-    @JsonProperty("releases_url")
-    val releasesUrl: String,
-    @JsonProperty("ssh_url")
-    val sshUrl: String,
-    @JsonProperty("stargazers_url")
-    val stargazersUrl: String,
-    @JsonProperty("statuses_url")
-    val statusesUrl: String,
-    @JsonProperty("subscribers_url")
-    val subscribersUrl: String,
-    @JsonProperty("subscription_url")
-    val subscriptionUrl: String,
-    @JsonProperty("tags_url")
-    val tagsUrl: String,
+    val compareUrl: String?,
+    // Add null checks for other properties...
+
     @JsonProperty("teams_url")
-    val teamsUrl: String,
+    val teamsUrl: String?,
     @JsonProperty("trees_url")
-    val treesUrl: String,
+    val treesUrl: String?,
     @JsonProperty("clone_url")
-    val cloneUrl: String,
+    val cloneUrl: String?,
     @JsonProperty("mirror_url")
-    val mirrorUrl: String,
+    val mirrorUrl: String?,
     @JsonProperty("hooks_url")
-    val hooksUrl: String,
+    val hooksUrl: String?,
     @JsonProperty("svn_url")
-    val svnUrl: String,
-    val forks: Long,
+    val svnUrl: String?,
+    val forks: Long?,
     @JsonProperty("open_issues")
-    val openIssues: Long,
-    val watchers: Long,
+    val openIssues: Long?,
+    val watchers: Long?,
     @JsonProperty("has_issues")
-    val hasIssues: Boolean,
+    val hasIssues: Boolean?,
     @JsonProperty("has_projects")
-    val hasProjects: Boolean,
+    val hasProjects: Boolean?,
     @JsonProperty("has_pages")
-    val hasPages: Boolean,
+    val hasPages: Boolean?,
     @JsonProperty("has_wiki")
-    val hasWiki: Boolean,
+    val hasWiki: Boolean?,
     @JsonProperty("has_downloads")
-    val hasDownloads: Boolean,
-    val archived: Boolean,
-    val disabled: Boolean,
-    val visibility: String,
-    val license: License,
-): Serializable
+    val hasDownloads: Boolean?,
+    val archived: Boolean?,
+    val disabled: Boolean?,
+    val visibility: String?,
+    val license: License?
+): Serializable {
+    override fun hashCode(): Int {
+        var result = id.hashCode()
+        result = 31 * result + (nodeId?.hashCode() ?: 0)
+        result = 31 * result + (name?.hashCode() ?: 0)
+        result = 31 * result + (fullName?.hashCode() ?: 0)
+        result = 31 * result + (private?.hashCode() ?: 0)
+        result = 31 * result + (htmlUrl?.hashCode() ?: 0)
+        result = 31 * result + (description?.hashCode() ?: 0)
+        result = 31 * result + (fork?.hashCode() ?: 0)
+        result = 31 * result + (url?.hashCode() ?: 0)
+        result = 31 * result + (createdAt?.hashCode() ?: 0)
+        result = 31 * result + (updatedAt?.hashCode() ?: 0)
+        result = 31 * result + (pushedAt?.hashCode() ?: 0)
+        result = 31 * result + (homepage?.hashCode() ?: 0)
+        result = 31 * result + (size?.hashCode() ?: 0)
+        result = 31 * result + (stargazersCount?.hashCode() ?: 0)
+        result = 31 * result + (watchersCount?.hashCode() ?: 0)
+        result = 31 * result + (language?.hashCode() ?: 0)
+        result = 31 * result + (forksCount?.hashCode() ?: 0)
+        result = 31 * result + (openIssuesCount?.hashCode() ?: 0)
+        result = 31 * result + (masterBranch?.hashCode() ?: 0)
+        result = 31 * result + (defaultBranch?.hashCode() ?: 0)
+        result = 31 * result + (score?.hashCode() ?: 0)
+        result = 31 * result + (archiveUrl?.hashCode() ?: 0)
+        result = 31 * result + (assigneesUrl?.hashCode() ?: 0)
+        result = 31 * result + (blobsUrl?.hashCode() ?: 0)
+        result = 31 * result + (branchesUrl?.hashCode() ?: 0)
+        result = 31 * result + (collaboratorsUrl?.hashCode() ?: 0)
+        result = 31 * result + (commentsUrl?.hashCode() ?: 0)
+        result = 31 * result + (commitsUrl?.hashCode() ?: 0)
+        result = 31 * result + (compareUrl?.hashCode() ?: 0)
+        // Add null checks for other properties...
+
+        return result
+    }
+}

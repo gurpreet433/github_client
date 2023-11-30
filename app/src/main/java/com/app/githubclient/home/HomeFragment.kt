@@ -99,13 +99,13 @@ class HomeFragment : Fragment() {
         recyclerView?.layoutManager = LinearLayoutManager(requireContext())
 
         adapter?.onItemClick = {
-//            val bundle = Bundle().apply {
-//                putSerializable("repo", it)
-//            }
+            val bundle = Bundle().apply {
+                putSerializable("repo", it)
+            }
 
             findNavController().navigate(
                 R.id.action_homeFragment_to_detailsFragment,
-                null
+                bundle
             )
         }
     }

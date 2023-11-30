@@ -44,8 +44,8 @@ class DetailsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-     //   val repo = args.repo
-     //   Toast.makeText(requireContext(), "${repo.name}", Toast.LENGTH_SHORT).show()
+        val repo = args.repo
+        Toast.makeText(requireContext(), "${repo.name}", Toast.LENGTH_SHORT).show()
     }
 
 }
