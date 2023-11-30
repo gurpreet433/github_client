@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
@@ -12,9 +13,66 @@
         tools:context=".details.DetailsFragment">
 
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="Hello" />
+            android:id="@+id/repoName"
+            android:layout_width="0dp"
+            android:layout_margin="@dimen/margin_small"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/text_large"
+            android:hint="@string/placeholder_text"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
+        <ImageView
+            android:id="@+id/image"
+            android:layout_width="@dimen/image_width"
+            android:layout_height="@dimen/image_width"
+            android:layout_margin="@dimen/margin_small"
+            android:contentDescription="@string/repository_image"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/repoName" />
+
+        <TextView
+            android:id="@+id/description"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_small"
+            android:hint="@string/placeholder_text"
+            android:textSize="@dimen/text_medium"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/image" />
+
+        <TextView
+            android:id="@+id/projectLinks"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_small"
+            android:hint="@string/projects_links"
+            android:textSize="@dimen/text_medium"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/description" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/projectLinksRecyclerview"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_margin="@dimen/margin_small"
+            app:layout_constraintEnd_toEndOf="@+id/projectLinks"
+            app:layout_constraintStart_toStartOf="@+id/projectLinks"
+            app:layout_constraintTop_toBottomOf="@+id/projectLinks" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/contributorsRecyclerview"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_margin="@dimen/margin_small"
+            app:layout_constraintEnd_toEndOf="@+id/projectLinks"
+            app:layout_constraintStart_toStartOf="@+id/projectLinks"
+            app:layout_constraintTop_toBottomOf="@+id/projectLinksRecyclerview" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
