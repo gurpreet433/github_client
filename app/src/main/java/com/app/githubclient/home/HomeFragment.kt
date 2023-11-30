@@ -1,4 +1,5 @@
 package com.app.githubclient.home
+
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -39,15 +40,6 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-//       val bundle = Bundle().apply {
-//           putSerializable("repo", it)
-//        }
-//
-//        findNavController().navigate(
-//            R.id.action_homeFragment_to_detailsFragment,
-//            bundle)
-
-
         binding?.searchView?.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String): Boolean {
 
@@ -55,6 +47,7 @@ class HomeFragment : Fragment() {
                 viewModel.getRepositories(query)
                 return false
             }
+
             override fun onQueryTextChange(newText: String): Boolean {
                 return false
             }
@@ -64,7 +57,7 @@ class HomeFragment : Fragment() {
         setUpRecyclerview()
 
         viewModel.searchRepositories.observe(viewLifecycleOwner, Observer { response ->
-            when (response){
+            when (response) {
                 is Resource.Success -> {
                     Log.e(TAG, "Success")
                     hideProgressBar()
@@ -106,18 +99,26 @@ class HomeFragment : Fragment() {
         recyclerView?.layoutManager = LinearLayoutManager(requireContext())
 
         adapter?.onItemClick = {
-            Toast.makeText(requireContext(), "Clicked", Toast.LENGTH_LONG).show()
+//            val bundle = Bundle().apply {
+//                putSerializable("repo", it)
+//            }
+
+            findNavController().navigate(
+                R.id.action_homeFragment_to_detailsFragment,
+                null
+            )
         }
-
-
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?): View? {
+        savedInstanceState: Bundle?
+    ): View? {
 
-        binding = DataBindingUtil.inflate<FragmentHomeBinding>(inflater,
-                                R.layout.fragment_home, container, false)
+        binding = DataBindingUtil.inflate<FragmentHomeBinding>(
+            inflater,
+            R.layout.fragment_home, container, false
+        )
         return binding!!.root
     }
 }

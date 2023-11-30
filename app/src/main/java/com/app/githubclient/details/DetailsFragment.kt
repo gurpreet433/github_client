@@ -22,13 +22,13 @@ class DetailsFragment : Fragment() {
     private var binding: FragmentDetailsBinding? = null
     private lateinit var viewModel: DetailsViewModel
 
-    val args: DetailsFragmentArgs by navArgs()
+    private val args: DetailsFragmentArgs by navArgs()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         val repository = Repository(ItemDatabase(requireContext()))
-        val detailsModelProviderFactory = HomeViewModelProviderFactory(repository)
+        val detailsModelProviderFactory = DetailsModelProviderFactory(repository)
         viewModel = ViewModelProvider(this, detailsModelProviderFactory)[DetailsViewModel::class.java]
     }
 
@@ -44,8 +44,8 @@ class DetailsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val repo = args.repo
-        Toast.makeText(requireContext(), "${repo.name}", Toast.LENGTH_SHORT).show()
+     //   val repo = args.repo
+     //   Toast.makeText(requireContext(), "${repo.name}", Toast.LENGTH_SHORT).show()
     }
 
 }
