@@ -47,9 +47,13 @@ class DetailsFragment : Fragment() {
 
         val repo = args.repo
 
-        //Glide.with(this).load(repo.owner.)
+        Glide.with(this).load(repo.owner?.avatarUrl).into(binding!!.image)
 
         binding?.repoName?.text = args.repo.name
+        binding?.description?.text = args.repo.description
+
+
+
     }
 
 }

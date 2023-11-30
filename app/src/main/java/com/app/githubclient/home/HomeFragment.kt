@@ -77,6 +77,8 @@ class HomeFragment : Fragment() {
                     Log.e(TAG, "Loading...")
                     showProgressBar()
                 }
+
+                else -> {Log.e(TAG, "something went wrong...")}
             }
         })
 

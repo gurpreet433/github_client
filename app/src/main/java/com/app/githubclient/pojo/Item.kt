@@ -91,8 +91,9 @@ data class Item(
     override fun hashCode(): Int {
         var result = id.hashCode()
         result = 31 * result + (nodeId?.hashCode() ?: 0)
-        result = 31 * result + (name?.hashCode() ?: 0)
+        result = 31 * result + name.hashCode()
         result = 31 * result + (fullName?.hashCode() ?: 0)
+        result = 31 * result + (owner?.hashCode() ?: 0)
         result = 31 * result + (private?.hashCode() ?: 0)
         result = 31 * result + (htmlUrl?.hashCode() ?: 0)
         result = 31 * result + (description?.hashCode() ?: 0)
@@ -120,7 +121,24 @@ data class Item(
         result = 31 * result + (commitsUrl?.hashCode() ?: 0)
         result = 31 * result + (compareUrl?.hashCode() ?: 0)
         // Add null checks for other properties...
-
+        result = 31 * result + (teamsUrl?.hashCode() ?: 0)
+        result = 31 * result + (treesUrl?.hashCode() ?: 0)
+        result = 31 * result + (cloneUrl?.hashCode() ?: 0)
+        result = 31 * result + (mirrorUrl?.hashCode() ?: 0)
+        result = 31 * result + (hooksUrl?.hashCode() ?: 0)
+        result = 31 * result + (svnUrl?.hashCode() ?: 0)
+        result = 31 * result + (forks?.hashCode() ?: 0)
+        result = 31 * result + (openIssues?.hashCode() ?: 0)
+        result = 31 * result + (watchers?.hashCode() ?: 0)
+        result = 31 * result + (hasIssues?.hashCode() ?: 0)
+        result = 31 * result + (hasProjects?.hashCode() ?: 0)
+        result = 31 * result + (hasPages?.hashCode() ?: 0)
+        result = 31 * result + (hasWiki?.hashCode() ?: 0)
+        result = 31 * result + (hasDownloads?.hashCode() ?: 0)
+        result = 31 * result + (archived?.hashCode() ?: 0)
+        result = 31 * result + (disabled?.hashCode() ?: 0)
+        result = 31 * result + (visibility?.hashCode() ?: 0)
+        result = 31 * result + (license?.hashCode() ?: 0)
         return result
     }
 }
