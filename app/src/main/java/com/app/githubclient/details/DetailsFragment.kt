@@ -53,8 +53,13 @@ class DetailsFragment : Fragment() {
         Glide.with(this).load(repo.owner?.avatar_url).placeholder(R.drawable.ic_launcher_background)
             .into(binding!!.image)
         binding?.repoName?.text = repo.name
-        binding?.projectLinks?.text = repo?.url
+        binding?.projectLink?.text = repo?.html_url
         binding?.description?.text = repo.description
+
+        binding?.projectLink?.setOnClickListener {
+
+        }
+
     }
 
 }

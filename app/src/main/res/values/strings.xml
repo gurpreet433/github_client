@@ -1,7 +1,10 @@
 <resources>
     <string name="app_name">Github Client</string>
     <string name="placeholder_text">loading...</string>
-    <string name="projects_links">Project links</string>
+
+    <string name="description_text">Description</string>
+    <string name="projects_link_text">Project link</string>
+    <string name="projects_contributors_text">Project Contributors</string>
 
     <string name="hello">Hello</string>
     <!-- TODO: Remove or change this placeholder text -->
