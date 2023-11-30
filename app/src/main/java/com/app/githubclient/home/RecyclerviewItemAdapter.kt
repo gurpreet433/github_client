@@ -13,6 +13,8 @@ import com.app.githubclient.pojo.Item
 
 class RecyclerviewItemAdapter() : RecyclerView.Adapter<RecyclerviewItemAdapter.ViewHolder>() {
 
+    var onItemClick : ((Item) -> Unit)? = null
+
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val homeName: TextView = itemView.findViewById(R.id.repoName)
     }
@@ -25,6 +27,10 @@ class RecyclerviewItemAdapter() : RecyclerView.Adapter<RecyclerviewItemAdapter.V
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val currentItem = differ.currentList[position]
         holder.homeName.text = currentItem.name
+
+        holder.itemView.setOnClickListener {
+            onItemClick?.invoke(currentItem)
+        }
     }
 
     override fun getItemCount(): Int {

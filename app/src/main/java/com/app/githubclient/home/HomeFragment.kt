@@ -105,6 +105,11 @@ class HomeFragment : Fragment() {
         recyclerView?.adapter = adapter
         recyclerView?.layoutManager = LinearLayoutManager(requireContext())
 
+        adapter?.onItemClick = {
+            Toast.makeText(requireContext(), "Clicked", Toast.LENGTH_LONG).show()
+        }
+
+
     }
 
     override fun onCreateView(
